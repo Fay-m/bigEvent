@@ -10,9 +10,8 @@ function getUserInfo() {
         url: '/my/userinfo',
         method: 'get',
         success: function (res) {
-            console.log(res);
             if (res.status !== 0) {
-                layui.layer.msg(res.message);
+                return layui.layer.msg(res.message);
             }
             renderUserInfo(res.data);
         }
@@ -27,10 +26,9 @@ function renderUserInfo(data) {
     var unameFir = uname[0].toUpperCase();
     if (data.user_pic == null) {
         $('.avatar').hide();
-        $('.textAvatar').show();
-        $('.textAvatar').html(unameFir);
+        $('.textAvatar').html(unameFir).show();
     } else {
-        $('.avatar').show();
+        $('.avatar').attr('src', data.user_pic).show();
         $('.textAvatar').hide();
     }
 }

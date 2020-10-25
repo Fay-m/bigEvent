@@ -8,4 +8,5 @@ $.ajaxPrefilter(function (opt) {
             Authorization: localStorage.getItem('token')
         }
     }
+    // 3.统一处理服务端返回的未登录错误
 })
